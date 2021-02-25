@@ -1,0 +1,23 @@
+body {
+   margin: 0; 
+}
+#container {
+    display: flex;
+    margin:auto;
+    width: 1260px;
+}
+
+header {
+    flex-grow: 1;
+    align-items: flex-end;
+    border-right: 1px #000000 solid;
+}
+
+main {
+    flex-grow: 2;
+    align-items: flex-start;
+}
+
+.fullheight {
+    min-height: 969px;
+}

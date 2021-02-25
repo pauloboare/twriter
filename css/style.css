@@ -21,3 +21,13 @@ main {
 .fullheight {
     min-height: 969px;
 }
+
+#header-home{
+    position: fixed;
+    height:30px;
+    width: 100%;
+    background: #ffffff;
+}
+#feed {
+    margin-top: 40px;
+}

@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+
 <div id="container" class="fullheight">
 <header role="banner" class="fullheight">
     <nav role="navigation">
@@ -25,6 +26,13 @@
 
     <div class="twreetar">
         <a href="#" role="button"> <span>Twreetar</span></a>
+    </div>
+
+    <div id="myacount">
+    <?php
+    session_start();
+	echo "Hello, @".$_SESSION['user-checked'];
+?>
     </div>
 </header>
     

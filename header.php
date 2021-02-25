@@ -11,6 +11,7 @@
 
 <div id="container" class="fullheight">
 <header role="banner" class="fullheight">
+    <div id="header-left">
     <nav role="navigation">
 
     <a href="#" role="link"><div><span>Página Inicial</span></div></a>
@@ -28,11 +29,12 @@
         <a href="#" role="button"> <span>Twreetar</span></a>
     </div>
 
-    <div id="myacount">
-    <?php
-    session_start();
-	echo "Hello, @".$_SESSION['user-checked'];
-?>
+        <div id="myacount">
+        <?php
+        session_start();
+        echo $_SESSION['name']."<br> @".$_SESSION['user-checked'];
+        ?>
+        </div>
     </div>
 </header>
     

@@ -27,17 +27,20 @@
             
 
 		if(mysqli_num_rows($check) > 0 ) {
-            
+
                 $data=mysqli_fetch_array($check);
                 $id_user=$data['id_users'];
+                $name=$data['name'];
 
             $_SESSION['id-user']=$id_user;
+            $_SESSION['name']=$name;
 			$_SESSION['user-checked']=$username;
 			$_SESSION['password-checked']=$password;
 			header('location:index.php');
 		}
 		else {
             unset ($_SESSION['id-user']);
+            unset ($_SESSION['name']);
 			unset ($_SESSION['user-checked']);
 			unset ($_SESSION['password-checked']);
 			echo "Incorrect username or password";

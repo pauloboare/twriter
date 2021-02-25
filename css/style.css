@@ -3,31 +3,83 @@ body {
 }
 #container {
     display: flex;
-    margin:auto;
+    margin: auto;
     width: 1260px;
 }
-
-header {
-    flex-grow: 1;
-    align-items: flex-end;
-    border-right: 1px #000000 solid;
-}
-
 main {
     flex-grow: 2;
-    align-items: flex-start;
+    display: flex;
+}
+header {
+    flex-grow: 1;
+
+}
+
+#header-home, #aside-search{
+    position: fixed;
+    top: 0;
+    height:40px;
+   
+}
+#header-home {
+    background: #ffffff;
+    border: 1px #000000 solid; 
+    width: 100%;
+    display: block;
+}
+#aside-search{
+    background: #ffffff;
+    width: 100%;
+    display: block;
+}
+#title-feed {
+    font-family: BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    padding: 0;
+    margin-left: 15px;
+}
+#header-left {
+    position: fixed;
 }
 
 .fullheight {
     min-height: 969px;
 }
-
-#header-home{
-    position: fixed;
-    height:30px;
-    width: 100%;
-    background: #ffffff;
-}
 #feed {
-    margin-top: 40px;
+    margin-top: 50px;
+    padding-left: 15px;
+}
+#feed-container {
+    margin: 0;
+    padding: 0;
+    flex-grow: 2;
+    border-left: 1px #000000 solid;
+}
+#feed-right{
+    margin: 0;
+    padding: 0;
+    flex-grow: 1;
+    border-left: 1px #000000 solid;
+}
+
+#search-home {
+    border-radius: 5px;
+    padding: 5px;
+    min-width: 200px;
+    min-height: 20px;
+    margin-top: 2px;
+}
+#trendings {
+    border-radius: 5px;
+    background: #c4bebe52;
+    padding: 5px;
+    max-width: 200px;
+    min-height: 500px;
+}
+#title-trendings {
+    font-family: BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    padding: 0;
+    margin-top: 50px;
+    border-bottom: #000000 solid 1px;
 }

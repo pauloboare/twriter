@@ -10,29 +10,45 @@
 
         <div id="feed">
             <div id="feed-form">
-                <form method="post">
-                    <textarea name="post" id="twretar" placeholder="O que está acontecendo?"></textarea>
-                    <div class="twreetar">
-                        <input type="submit" value="Twreetar">
+                    <div id='form-avatar'>
+                        <img src='img/default.png' id='img-avatar'>
                     </div>
-                    <?php 
-                    include "connect.php";
-                    include "session.php";
-                    if(isset($_POST['post'])){
-                    $a=$_SESSION['id-user'];
-                    $b=$_POST['post'];
-                    $sql="INSERT INTO tb_posts VALUES (NULL, '$a','$b', NOW())";
-                    $result=mysqli_query($connect, $sql);
-                    if ($result) {
-                        header('location:index.php');;
-                    }
-                    else {
-                        echo "Failed!";
-                    }
-                    }
-                    mysqli_close ($connect);
-                    ?>
-                    </form>
+                    <div id='mypost'>
+                        <form method="post">
+                            <textarea name="post" id="twretar" placeholder="O que está acontecendo?"></textarea>
+                            <div class="twreetar">
+                                <div id="btns-forms">
+                                    <div id="btns-left">
+                                       <span class="material-icons btns-left">insert_photo</span>
+                                       <span class="material-icons btns-left">gif</span>
+                                       <span class="material-icons btns-left">poll</span>
+                                       <span class="material-icons btns-left">mood</span>
+                                       <span class="material-icons btns-left">schedule_send</span>
+                                    </div>
+                                    <div id="btns-right">
+                                        <input type="submit" id="btn-post" value="Twreetar">
+                                    </div>
+                                </div>
+                            </div>
+                            <?php 
+                            include "connect.php";
+                            include "session.php";
+                            if(isset($_POST['post'])){
+                            $a=$_SESSION['id-user'];
+                            $b=$_POST['post'];
+                            $sql="INSERT INTO tb_posts VALUES (NULL, '$a','$b', NOW())";
+                            $result=mysqli_query($connect, $sql);
+                            if ($result) {
+                                header('location:index.php');;
+                            }
+                            else {
+                                echo "Failed!";
+                            }
+                            }
+                            mysqli_close ($connect);
+                            ?>
+                            </form>
+                    </div>
 
               
             </div>
@@ -40,11 +56,18 @@
                 
 
                 <?php
+                setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
                 date_default_timezone_set('America/Sao_Paulo');
-                include "connect.php";
-                $sql = mysqli_query($connect, "SELECT * FROM tb_posts INNER JOIN tb_users ON tb_posts.fk_user = tb_users.id_users ORDER BY datatime DESC");
-                while ($result=mysqli_fetch_array($sql)) {
+                $userSession=$_SESSION['id-user'];
 
+                include "connect.php";
+                $sql = mysqli_query($connect, "SELECT * FROM tb_users 
+                INNER JOIN tb_posts ON tb_users.id_users = tb_posts.fk_user 
+                INNER JOIN tb_followers ON tb_users.id_users = tb_followers.fk_user_follower
+                WHERE fk_user_follower = $userSession
+                ORDER BY datatime DESC");
+                while ($result=mysqli_fetch_array($sql)) {
+                   
                     $dataStart = $result['datatime'];
                     $dataNow = date("Y-m-d H:i:s");
 
@@ -58,17 +81,22 @@
                         $crhonology= round($minutes,0);
                         $typeTime=" min";
                     }
-                    elseif($hours>=1){
+                    elseif($hours>=1 and $hours<24){
                         $crhonology= round($hours,0);
                         $typeTime=" h";
+                    }
+                    else {
+                        $date = $result['datatime'];
+	                    $crhonology=strftime('%d de %b', strtotime( $date ));
+                        $typeTime="";
                     }
 
                     echo "<article id='posts'>
                     <div id='user-avatar'>
-                        <img src='img/default.png' id='img-avatar'>
+                        <img src='img/default.png' class='img-avatar'>
                     </div>
-                    <div id='post-single'> @".
-                    $result['username']." ".$result['name']." - " .$crhonology. " ".$typeTime. "<br>".
+                    <div id='post-single'> <span class='post-name-title'>".
+                    $result['name']."</span> <span class='post-username-title'> @".$result['username']." - " .$crhonology. " ".$typeTime. "</span><br>".
                     $result['post'].
                     "</div>
                     </article>";

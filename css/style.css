@@ -1,5 +1,6 @@
 body {
-   margin: 0; 
+    font-family: BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    margin: 0; 
 }
 #container {
     display: flex;
@@ -13,6 +14,25 @@ main {
 header {
     flex-grow: 1;
 }
+#nav-logo {
+    width: 32px;
+}
+.nav-link {
+    font-size: 18px;
+    color: #000000;
+    text-decoration: none;
+    font-weight: 900;
+}
+.nav-link .material-icons {
+    margin-right: 4px;
+    font-size: 18px;
+    color: #000000;
+    font-weight: 900;
+}
+.link-title span {
+    padding: 16px 0px 16px 0;
+    align-content: center;
+}
 #header-home, #aside-search{
     position: fixed;
     top: 0;
@@ -20,9 +40,14 @@ header {
 }
 #header-home {
     background: #ffffff;
-    border: 1px #000000 solid; 
+    border: 1px rgb(133, 133, 133) solid; 
     width: 100%;
     display: block;
+}
+#myacount {
+    display: flex;
+    position: relative;
+    top: 100px;
 }
 #aside-search{
     background: #ffffff;
@@ -36,9 +61,10 @@ header {
     font-size: 16px;
     width: 98%;
     height: 60px;
+    outline:none;
 }
+
 #title-feed {
-    font-family: BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     font-size: 16px;
     padding: 0;
     margin-left: 15px;
@@ -56,15 +82,20 @@ header {
     margin: 0;
     padding: 0;
     flex-grow: 2;
-    border-left: 1px #000000 solid;
+    border-left: 1px rgb(133, 133, 133) solid;
 }
 #feed-right{
     margin: 0;
     padding: 0;
     flex-grow: 1;
-    border-left: 1px #000000 solid;
+    border-left: 1px rgb(133, 133, 133) solid;
 }
-
+#feed-form{
+    display: flex;
+    border-bottom: 1px rgb(133, 133, 133) solid;
+    padding-bottom: 10px;
+    margin-bottom: 10px;;
+}
 #search-home {
     border-radius: 5px;
     padding: 5px;
@@ -80,21 +111,67 @@ header {
     min-height: 500px;
 }
 #title-trendings {
-    font-family: BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     font-size: 12px;
     padding: 0;
     margin-top: 50px;
-    border-bottom: #000000 solid 1px;
+    border-bottom: rgb(133, 133, 133) solid 1px;
 }
 #posts {
     display: flex;
-    border-bottom: #000000 solid 1px;
+    border-bottom: rgb(133, 133, 133) solid 1px;
 }
-#img-avatar {
+.img-avatar, #img-avatar {
     border-radius: 50%;
     width: 60px;
     height: 60px;
-}
-#post-single {
     margin-left: 10px;
+}
+#post-single, #mypost {
+    margin-left: 10px;
+     width: 100%;
+}
+#btns-forms {
+    display: flex;
+}
+#btns-left {
+    flex-grow: 1;
+}
+.btns-left{
+    width: 25px;
+    height: 25px;
+    background: #ffffff;
+    color: rgba(29,161,242,1.00);
+    border-radius: 5px;
+}
+#btns-right {
+    flex-grow: 1;
+    display:flex;
+    justify-content: flex-end;
+    margin-right: 10px;
+}
+#btn-nav {
+    width: 200px;
+    height: 50px;
+    border: none;
+    border-radius: 50px;
+    background: rgba(29,161,242,1.00);
+    color: #ffffff;
+    font-weight: 900;
+    font-size: 16px;
+}
+#btn-post {
+    width: 100px;
+    height: 40px;
+    border: none;
+    border-radius: 40px;
+    background: rgba(29,161,242,1.00);
+    color: #ffffff;
+    font-weight: 900;
+    font-size: 16px;
+}
+.post-name-title {
+    font-weight: 900;
+}
+.post-username-title {
+    color: #5d6266;
 }

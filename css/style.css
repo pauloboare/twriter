@@ -12,14 +12,11 @@ main {
 }
 header {
     flex-grow: 1;
-
 }
-
 #header-home, #aside-search{
     position: fixed;
     top: 0;
     height:40px;
-   
 }
 #header-home {
     background: #ffffff;
@@ -32,6 +29,14 @@ header {
     width: 100%;
     display: block;
 }
+#twretar {
+    resize: none;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    width: 98%;
+    height: 60px;
+}
 #title-feed {
     font-family: BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     font-size: 16px;
@@ -41,13 +46,11 @@ header {
 #header-left {
     position: fixed;
 }
-
 .fullheight {
     min-height: 969px;
 }
 #feed {
     margin-top: 50px;
-    padding-left: 15px;
 }
 #feed-container {
     margin: 0;
@@ -82,4 +85,16 @@ header {
     padding: 0;
     margin-top: 50px;
     border-bottom: #000000 solid 1px;
+}
+#posts {
+    display: flex;
+    border-bottom: #000000 solid 1px;
+}
+#img-avatar {
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+}
+#post-single {
+    margin-left: 10px;
 }

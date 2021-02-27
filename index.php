@@ -61,10 +61,12 @@
                 $userSession=$_SESSION['id-user'];
 
                 include "connect.php";
-                $sql = mysqli_query($connect, "SELECT * FROM tb_users 
-                INNER JOIN tb_posts ON tb_users.id_users = tb_posts.fk_user 
-                INNER JOIN tb_followers ON tb_users.id_users = tb_followers.fk_user_follower
-                WHERE fk_user_follower = $userSession
+                $sql = mysqli_query($connect, "SELECT * FROM tb_posts
+                inner JOIN tb_follow ON tb_posts.fk_user = tb_follow.user_following
+                inner join tb_users on tb_posts.fk_user = tb_users.id_users
+                WHERE tb_follow.user_on=$userSession
+                OR tb_posts.fk_user =$userSession
+                GROUP BY id_posts
                 ORDER BY datatime DESC");
                 while ($result=mysqli_fetch_array($sql)) {
                    

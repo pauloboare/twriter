@@ -32,7 +32,7 @@
                             </div>
                             <?php 
                             include "connect.php";
-                            include "session.php";
+                           
                             if(isset($_POST['post'])){
                             $a=$_SESSION['id-user'];
                             $b=$_POST['post'];

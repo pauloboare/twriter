@@ -33,7 +33,10 @@
 
         <div id="myacount">
         <?php
-        session_start();
+        require "session.php";
+        if (!isset($_SESSION)) { 
+            session_start(); 
+        }
         echo "<div id='user-avatar'>
         <img src='img/default.png' class='img-avatar'>
         </div>

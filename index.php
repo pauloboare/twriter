@@ -62,7 +62,7 @@
 
                 include "connect.php";
                 $sql = mysqli_query($connect, "SELECT * FROM tb_posts
-                inner JOIN tb_follow ON tb_posts.fk_user = tb_follow.user_following
+                left JOIN tb_follow ON tb_posts.fk_user = tb_follow.user_following
                 inner join tb_users on tb_posts.fk_user = tb_users.id_users
                 WHERE tb_follow.user_on=$userSession
                 OR tb_posts.fk_user =$userSession

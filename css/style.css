@@ -184,8 +184,14 @@ header {
     font-size: 16px;
 }
 .post-name-title {
+    color: #000000;
     font-weight: 900;
+    text-decoration: none;
+}
+.post-name-title:hover {
+    text-decoration: underline;
 }
 .post-username-title {
     color: #5d6266;
+    text-decoration: none;
 }

@@ -1,12 +1,9 @@
 <?php include "header.php";
 
-if (!isset($_SESSION)) { 
-    session_start(); 
-}
 include "connect.php";
 $url = $_SERVER["REQUEST_URI"];
-$userProfile = substr($url, strrpos($url,"=")+1);
-
+//$userProfile = substr($url, strrpos($url,"?")+1);
+$userProfile=$_GET['userurl'];
 $sqlUser="SELECT * FROM tb_users WHERE username='$userProfile'";
 $resultUser=mysqli_query($connect, $sqlUser);
 
@@ -26,7 +23,7 @@ $postCount=mysqli_fetch_assoc($postUserCount);
     <div id="feed-container">
                 <div id="header-home">
                     <h2 id="title-feed"> <?php echo $nameProfile; ?> </h2> 
-                    <?php echo $postCount['postCounts'];  ?> trweets
+                    <?php echo $postCount['postCounts'];  ?> twreets
                 </div>
 
 
@@ -66,56 +63,7 @@ $postCount=mysqli_fetch_assoc($postUserCount);
             <section id="feed-posts">
                 
 
-                <?php
-                setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
-                date_default_timezone_set('America/Sao_Paulo');
-                
-
-                include "connect.php";
-                $sql = mysqli_query($connect, "SELECT * FROM tb_posts
-                left JOIN tb_follow ON tb_posts.fk_user = tb_follow.user_following
-                inner join tb_users on tb_posts.fk_user = tb_users.id_users
-                WHERE tb_posts.fk_user =$idProfile
-                GROUP BY id_posts
-                ORDER BY datatime DESC");
-                while ($result=mysqli_fetch_array($sql)) {
-                   
-                    $dataStart = $result['datatime'];
-                    $dataNow = date("Y-m-d H:i:s");
-
-                    $unix_Start = strtotime($dataStart);
-                    $unix_Now = strtotime($dataNow);
-
-                    $hours    = floor(($unix_Now - $unix_Start) / 3600);
-                    $minutes  = floor((($unix_Now - $unix_Start) - ($hours * 3600)) / 60);
-
-                    if($hours<1){
-                        $crhonology= round($minutes,0);
-                        $typeTime=" min";
-                    }
-                    elseif($hours>=1 and $hours<24){
-                        $crhonology= round($hours,0);
-                        $typeTime=" h";
-                    }
-                    else {
-                        $date = $result['datatime'];
-	                    $crhonology=strftime('%d de %b', strtotime( $date ));
-                        $typeTime="";
-                    }
-
-                    echo "<article id='posts'>
-                    <div id='user-avatar'>
-                        <img src='img/default.png' class='img-avatar'>
-                    </div>
-                    <div id='post-single'> <span class='post-name-title'>".
-                    $result['name']."</span> <span class='post-username-title'> @".$result['username']." - " .$crhonology. " ".$typeTime. "</span><br>".
-                    $result['post'].
-                    "</div>
-                    </article>";
-                }
-                mysqli_close($connect);
-                ?>
-
+            <?php include "post-model.php"; ?>
 
 
                 

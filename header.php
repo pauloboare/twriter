@@ -12,22 +12,19 @@
 <body>
 <?php
  include "session.php";
- if (!isset($_SESSION)) { 
-     session_start(); 
- }
 ?>
 <div id="container" class="fullheight">
 <header role="banner" class="fullheight">
     <div id="header-left">
         <nav role="navigation">
-        <a href="index.php" role="link" class="nav-link"><div class="link-title"><img src="img/origami.png" id="nav-logo"></div></a>
-        <a href="index.php" role="link" class="nav-link"><div class="link-title"><span class="material-icons">home</span><span>Página Inicial</span></div></a>
+        <a href="home.php" role="link" class="nav-link"><div class="link-title"><img src="img/origami.png" id="nav-logo"></div></a>
+        <a href="home.php" role="link" class="nav-link"><div class="link-title"><span class="material-icons">home</span><span>Página Inicial</span></div></a>
         <a href="#" role="link" class="nav-link"><div class="link-title"><span class="material-icons">tag</span><span>Explorar</span></div></a>
         <a href="#" role="link" class="nav-link"><div class="link-title"><span class="material-icons">notifications_none</span><span>Notificações</span></div></a>
         <a href="#" role="link" class="nav-link"><div class="link-title"><span class="material-icons">mail_outline</span><span>Mensagens</span></div></a>
         <a href="#" role="link" class="nav-link"><div class="link-title"><span class="material-icons">bookmark_border</span><span>Itens Salvos</span></div></a>
         <a href="#" role="link" class="nav-link"><div class="link-title"><span class="material-icons">subject</span><span>Listas</span></div></a>
-        <a href="profile.php?id_users=<?php echo $_SESSION['user-checked'];?>" role="link" class="nav-link"><div class="link-title"><span class="material-icons">perm_identity</span><span>Perfil</span></div></a>
+        <a href="<?php echo $_SESSION['user-checked'];?>" role="link" class="nav-link"><div class="link-title"><span class="material-icons">perm_identity</span><span>Perfil</span></div></a>
         <a href="#" role="link" class="nav-link"><div class="link-title"><span class="material-icons">more_horiz</span><span>Mais</span></div></a>
 
         </nav>

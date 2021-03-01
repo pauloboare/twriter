@@ -50,7 +50,7 @@ header {
 #header-home, #aside-search{
     position: fixed;
     top: 0;
-    height:40px;
+    height:80px;
 }
 #header-home {
     background: #ffffff;
@@ -90,7 +90,7 @@ header {
     min-height: 969px;
 }
 #feed {
-    margin-top: 50px;
+    margin-top: 100px;
 }
 #feed-container {
     margin: 0;

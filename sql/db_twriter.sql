@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 27-Fev-2021 às 04:46
--- Versão do servidor: 10.4.11-MariaDB
--- versão do PHP: 7.4.6
+-- Tempo de geração: 01-Mar-2021 às 04:35
+-- Versão do servidor: 10.4.17-MariaDB
+-- versão do PHP: 8.0.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -41,7 +41,12 @@ INSERT INTO `tb_follow` (`id_follow`, `user_on`, `user_following`) VALUES
 (3, 4, 5),
 (4, 4, 3),
 (5, 5, 4),
-(6, 3, 4);
+(6, 3, 4),
+(8, 4, 5),
+(9, 8, 3),
+(10, 8, 3),
+(11, 4, 8),
+(12, 4, 8);
 
 -- --------------------------------------------------------
 
@@ -69,7 +74,14 @@ INSERT INTO `tb_posts` (`id_posts`, `fk_user`, `post`, `datatime`) VALUES
 (42, 3, 'Isso é legal', '2021-02-26 23:55:30'),
 (43, 4, 'Vamos que vamos', '2021-02-26 23:55:44'),
 (45, 4, 'DEU CERTO', '2021-02-27 00:31:02'),
-(46, 4, 'Agora to com fome', '2021-02-27 00:39:15');
+(46, 4, 'Agora to com fome', '2021-02-27 00:39:15'),
+(47, 4, 'TO COM FOME', '2021-02-27 18:54:51'),
+(51, 5, 'O code é lindoooo', '2021-02-27 19:01:37'),
+(52, 8, 'auau', '2021-02-27 19:08:19'),
+(53, 8, 'au au', '2021-02-27 23:23:00'),
+(54, 9, 'Oi, gente', '2021-02-27 23:36:45'),
+(55, 4, 'Deu certo', '2021-02-28 23:45:39'),
+(56, 4, 'uhull', '2021-03-01 00:31:39');
 
 -- --------------------------------------------------------
 
@@ -91,7 +103,9 @@ CREATE TABLE `tb_users` (
 INSERT INTO `tb_users` (`id_users`, `username`, `name`, `password`) VALUES
 (3, 'jefferson15', 'Jefferson', '883d5554d83ebae9c26936212f20b9a2'),
 (4, 'pauloboare', 'Paulo Henrique', '883d5554d83ebae9c26936212f20b9a2'),
-(5, 'cine_barreto', 'Francine Barreto', '883d5554d83ebae9c26936212f20b9a2');
+(5, 'cine_barreto', 'Francine Barreto', '883d5554d83ebae9c26936212f20b9a2'),
+(8, 'code', 'Code', '883d5554d83ebae9c26936212f20b9a2'),
+(9, 'sazinha', 'Sá', '883d5554d83ebae9c26936212f20b9a2');
 
 --
 -- Índices para tabelas despejadas
@@ -126,19 +140,19 @@ ALTER TABLE `tb_users`
 -- AUTO_INCREMENT de tabela `tb_follow`
 --
 ALTER TABLE `tb_follow`
-  MODIFY `id_follow` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_follow` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de tabela `tb_posts`
 --
 ALTER TABLE `tb_posts`
-  MODIFY `id_posts` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `id_posts` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 
 --
 -- AUTO_INCREMENT de tabela `tb_users`
 --
 ALTER TABLE `tb_users`
-  MODIFY `id_users` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_users` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- Restrições para despejos de tabelas

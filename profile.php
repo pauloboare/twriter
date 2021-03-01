@@ -3,7 +3,7 @@
 include "connect.php";
 $url = $_SERVER["REQUEST_URI"];
 //$userProfile = substr($url, strrpos($url,"?")+1);
-$userProfile=$_GET['userurl'];
+$userProfile=@$_GET['userurl'];
 $sqlUser="SELECT * FROM tb_users WHERE username='$userProfile'";
 $resultUser=mysqli_query($connect, $sqlUser);
 
@@ -11,6 +11,11 @@ if (mysqli_num_rows($resultUser)) {
 $dataUser=mysqli_fetch_array($resultUser);
 $idProfile=$dataUser['id_users'];
 $nameProfile=$dataUser['name'];
+}
+else {
+    http_response_code(404);
+    include('404.php'); 
+    die();
 }
 
 $postUserCount = mysqli_query($connect, "SELECT COUNT(*) as postCounts FROM tb_posts WHERE fk_user=$idProfile");

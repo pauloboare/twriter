@@ -17,8 +17,8 @@
 <header role="banner" class="fullheight">
     <div id="header-left">
         <nav role="navigation">
-        <a href="home.php" role="link" class="nav-link"><div class="link-title"><img src="img/origami.png" id="nav-logo"></div></a>
-        <a href="home.php" role="link" class="nav-link"><div class="link-title"><span class="material-icons">home</span><span>Página Inicial</span></div></a>
+        <a href="home" role="link" class="nav-link"><div class="link-title"><img src="img/origami.png" id="nav-logo"></div></a>
+        <a href="home" role="link" class="nav-link"><div class="link-title"><span class="material-icons">home</span><span>Página Inicial</span></div></a>
         <a href="#" role="link" class="nav-link"><div class="link-title"><span class="material-icons">tag</span><span>Explorar</span></div></a>
         <a href="#" role="link" class="nav-link"><div class="link-title"><span class="material-icons">notifications_none</span><span>Notificações</span></div></a>
         <a href="#" role="link" class="nav-link"><div class="link-title"><span class="material-icons">mail_outline</span><span>Mensagens</span></div></a>

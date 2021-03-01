@@ -3,7 +3,13 @@
 include "connect.php";
 $url = $_SERVER["REQUEST_URI"];
 //$userProfile = substr($url, strrpos($url,"?")+1);
-$userProfile=@$_GET['userurl'];
+if(empty($_GET)){
+    http_response_code(404);
+    include('404.php'); 
+    die();}
+else {
+    $userProfile=$_GET['userurl'];
+}
 $sqlUser="SELECT * FROM tb_users WHERE username='$userProfile'";
 $resultUser=mysqli_query($connect, $sqlUser);
 

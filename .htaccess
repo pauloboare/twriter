@@ -3,6 +3,13 @@ RewriteCond %{SCRIPT_FILENAME} !-f
 RewriteCond %{SCRIPT_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME}\.php -f
+
 RewriteRule ^(.*)$ $1.php
+
 RewriteRule ^([a-zA-Z0-9_-]+)$ profile.php?userurl=$1
+
+RewriteRule ^([a-zA-Z0-9_-]+)$ following.php?userfollow=$1
+
+RewriteRule ^([a-zA-Z0-9_-]+)/followers$ follower.php?userfollow=$1
+
 ErrorDocument 404 /404.php

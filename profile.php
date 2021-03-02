@@ -35,11 +35,12 @@ $postCount=mysqli_fetch_assoc($postUserCount);
                 <div id="header-home">
 
                     <h2 id="title-feed">
-                    <a href=<?php echo isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : "home"; ?>> 
-                    <span class="material-icons">keyboard_backspace</span></a> <?php echo $nameProfile; ?> 
+                    <a href="<?php echo isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : "home";?>"> 
+                    <span class="material-icons">keyboard_backspace</span></a> <?php echo $nameProfile;?>
                     </h2> 
 
-                    <?php echo $postCount['postCounts'];  ?> twreets
+                    <?php echo $postCount['postCounts'];?>
+                    twreets
 
                 </div>
 
@@ -53,10 +54,9 @@ $postCount=mysqli_fetch_assoc($postUserCount);
                        
                     </div>
                     <div id="bio-profile">
-                    <?php
-                 
-             
 
+                    <?php
+                
                 $follow = mysqli_query($connect, "SELECT COUNT(*) as followers FROM tb_follow WHERE user_on=$idProfile");
                 $following = mysqli_query($connect, "SELECT COUNT(*) as followings FROM tb_follow WHERE user_following=$idProfile");
                 $followResult=mysqli_fetch_assoc($follow);
@@ -66,10 +66,46 @@ $postCount=mysqli_fetch_assoc($postUserCount);
                         .$nameProfile."</span> <br> 
                         <span class='post-username-title'>@" 
                         .$userProfile."</span>";
+                        if( $idProfile == $_SESSION['id-user'] ){
+                            echo "<form method=post>
+                            <button> Editar Perfil </button>
+                            </form>";
+                        }
+                        elseif( mysqli_num_rows(mysqli_query($connect, "SELECT * FROM tb_follow 
+                        WHERE user_on=".$_SESSION['id-user']. " AND user_following=".$idProfile )) === 0){
+                        echo    "<form method=post action=".$userProfile.">
+                                <button name='btn-follow'> Seguir </button>
+                                </form>";
+                               
+                                if(isset($_POST['btn-follow'])){
+                                $sql="INSERT INTO tb_follow VALUES (NULL, ".$_SESSION['id-user'].",".$idProfile.")";
+                                $resultF=mysqli_query($connect, $sql);
+                                    if ($resultF) {
+                                       echo "<meta HTTP-EQUIV='refresh' CONTENT='0.1;URL=".$userProfile."'>";
+                                     }
+                                    }
+                                }
+                                 elseif( mysqli_num_rows(mysqli_query($connect, "SELECT * FROM tb_follow 
+                                WHERE user_on=".$_SESSION['id-user']. " AND user_following=".$idProfile )) > 0){
+                                echo    "<form method=post action=".$userProfile.">
+                                <button name='btn-follow'> Deixar de seguir </button>
+                                </form>";
+                                
+                                if(isset($_POST['btn-follow'])){
+                                $sql="DELETE FROM tb_follow WHERE user_on=".$_SESSION['id-user']. " AND user_following=$idProfile";
+                                $resultD=mysqli_query($connect, $sql);
+                                    if ($resultD) {
+                                    echo "<meta HTTP-EQUIV='refresh' CONTENT='0.1;URL=".$userProfile."'>";
+                                        }
+                                    }
+                                }
+                        
                     
-                     echo "<p>".
-                            $followResult['followers']." Seguindo ". 
-                            "<a href='".$userProfile."/following'> " .$followingResult['followings']. " Seguidores </a>
+                     echo "<p> <a href='follower.php?userfollow=$userProfile'>".
+                            $followResult['followers']." Seguindo </a> 
+                            <a href='following.php?userfollow=".$userProfile."/following'>".
+                            $followingResult['followings']." Seguidores ". 
+                            "</a>
                         </p>";
                         
                         mysqli_close($connect);

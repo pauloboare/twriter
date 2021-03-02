@@ -28,7 +28,7 @@
                             $sql="INSERT INTO tb_posts VALUES (NULL, '$a','$b', NOW())";
                             $result=mysqli_query($connect, $sql);
                             if ($result) {
-                                header('location:index.php');;
+                                header('location:index.php');exit;
                             }
                             else {
                                 echo "Failed!";

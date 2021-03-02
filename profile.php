@@ -68,7 +68,8 @@ $postCount=mysqli_fetch_assoc($postUserCount);
                         .$userProfile."</span>";
                     
                      echo "<p>".
-                            $followResult['followers']." Seguindo ". $followingResult['followings']." Seguidores 
+                            $followResult['followers']." Seguindo ". 
+                            "<a href='".$userProfile."/following'> " .$followingResult['followings']. " Seguidores </a>
                         </p>";
                         
                         mysqli_close($connect);

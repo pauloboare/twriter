@@ -33,8 +33,14 @@ $postCount=mysqli_fetch_assoc($postUserCount);
         
     <div id="feed-container">
                 <div id="header-home">
-                    <h2 id="title-feed"> <?php echo $nameProfile; ?> </h2> 
+
+                    <h2 id="title-feed">
+                    <a href=<?php echo isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : "home"; ?>> 
+                    <span class="material-icons">keyboard_backspace</span></a> <?php echo $nameProfile; ?> 
+                    </h2> 
+
                     <?php echo $postCount['postCounts'];  ?> twreets
+
                 </div>
 
 
@@ -95,8 +101,4 @@ $postCount=mysqli_fetch_assoc($postUserCount);
 
 
 
-
-
-</div>
-</body>
-</html>
+<?php include "footer.php"; ?>

@@ -182,6 +182,10 @@ header {
     font-weight: 900;
     font-size: 16px;
 }
+#btn-post a {
+    color: #FFFFFF;
+    text-decoration: none;
+}
 .post-name-title {
     color: #000000;
     font-weight: 900;

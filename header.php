@@ -30,7 +30,8 @@
         </nav>
 
         <div class="twreetar">
-            <button id="btn-nav">Twreetar</button>
+            <?php include "modal.php"; ?>
+
         </div>
 
         <div id="myacount">

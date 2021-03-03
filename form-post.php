@@ -15,7 +15,7 @@
                                        <span class="material-icons btns-left">schedule_send</span>
                                     </div>
                                     <div id="btns-right">
-                                        <input type="submit" id="btn-post" value="Twreetar">
+                                        <input type="submit" id="btn-post" value="Twreetar" onClick='window.location.reload()'>
                                     </div>
                                 </div>
                             </div>
@@ -25,14 +25,8 @@
                             if(isset($_POST['post'])){
                             $a=$_SESSION['id-user'];
                             $b=$_POST['post'];
-                            $sql="INSERT INTO tb_posts VALUES (NULL, '$a','$b', NOW())";
-                            $result=mysqli_query($connect, $sql);
-                            if ($result) {
-                                header('location:index.php');exit;
-                            }
-                            else {
-                                echo "Failed!";
-                            }
+                            $sql="INSERT INTO tb_posts (id_posts, fk_user, post, datatime) VALUES (NULL, '$a','$b', NOW())";
+                                if (mysqli_query($connect, $sql)): endif;
                             }
                             mysqli_close ($connect);
                             ?>

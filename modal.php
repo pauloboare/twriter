@@ -1,9 +1,10 @@
 <!-- Modal HTML embedded directly into document -->
 <div id="ex1" class="modal">
   <p><?php 
-  if(isset($_POST["btn-post"])){
+ 
      include "form-post.php";
-     } ?></p>
+ 
+     ?></p>
 </div>
 
 <!-- Link to open the modal -->

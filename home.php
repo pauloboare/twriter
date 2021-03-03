@@ -15,17 +15,12 @@
 
         <div id="feed">
            
-                    <?php include "form-post.php"; ?>
-
-              
+                    <?php include "form-post.php"; ?>      
    
             <section id="feed-posts">
                 
 
                <?php include "post-model.php"; ?>
-
-
-
                 
             </section>
         </div>

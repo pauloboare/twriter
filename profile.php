@@ -73,29 +73,29 @@ $postCount=mysqli_fetch_assoc($postUserCount);
                         }
                         elseif( mysqli_num_rows(mysqli_query($connect, "SELECT * FROM tb_follow 
                         WHERE user_on=".$_SESSION['id-user']. " AND user_following=".$idProfile )) === 0){
-                        echo    "<form method=post action=".$userProfile.">
-                                <button name='btn-follow' onClick='window.location.reload()'> Seguir </button>
+                        echo    "<form method=post>
+                                <button name='btn-follow'> Seguir </button>
                                 </form>";
                                
                                 if(isset($_POST['btn-follow'])){
                                 $sql="INSERT INTO tb_follow VALUES (NULL, ".$_SESSION['id-user'].",".$idProfile.")";
                                 $resultF=mysqli_query($connect, $sql);
                                     if ($resultF) {
-                                      // echo "<meta HTTP-EQUIV='refresh' CONTENT='0.1;URL=".$userProfile."'>";
+                                      echo "<meta HTTP-EQUIV='refresh' CONTENT='0.1;URL=".$userProfile."'>";
                                      }
                                     }
                                 }
                                  elseif( mysqli_num_rows(mysqli_query($connect, "SELECT * FROM tb_follow 
                                 WHERE user_on=".$_SESSION['id-user']. " AND user_following=".$idProfile )) > 0){
-                                echo    "<form method=post action=".$userProfile.">
-                                <button name='btn-follow' onClick='window.location.reload()'> Deixar de seguir </button>
+                                echo    "<form method=post>
+                                <button name='btn-follow'> Deixar de seguir </button>
                                 </form>";
                                 
                                 if(isset($_POST['btn-follow'])){
                                 $sql="DELETE FROM tb_follow WHERE user_on=".$_SESSION['id-user']. " AND user_following=$idProfile";
                                 $resultD=mysqli_query($connect, $sql);
                                     if ($resultD) {
-                                    // echo "<meta HTTP-EQUIV='refresh' CONTENT='0.1;URL=".$userProfile."'>";
+                                    echo "<meta HTTP-EQUIV='refresh' CONTENT='0.1;URL=".$userProfile."'>";
                                         }
                                     }
                                 }

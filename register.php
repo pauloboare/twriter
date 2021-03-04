@@ -23,16 +23,21 @@
     $b=$_POST['name'];
     $c=md5(md5($_POST['password']."#?*&#"));
     $d=md5(md5($_POST['r-password']."#?*&#"));;
-        if($c==$d){
-        $register="INSERT INTO tb_users VALUES (NULL,'$a', '$b', '$c')";
-        $result=mysqli_query($connect, $register);
-            if ($result) {
-            header('location:logout.php');
-            echo "Sucesseful";
+        if(mysqli_num_rows(mysqli_query($connect, "SELECT * FROM tb_users WHERE username='$a'"))>0){
+            echo "Esse nome de usuário já existe";
         }
-    }
-    else {
-        echo "Passwords do not match";
+        else {
+            if($c==$d){
+            $register="INSERT INTO tb_users VALUES (NULL,'$a', '$b', '$c')";
+            $result=mysqli_query($connect, $register);
+                if ($result) {
+                header('location:logout.php');
+                echo "Sucesseful";
+                }
+                }
+                else {
+                    echo "Passwords do not match";
+                    }
         }
     }
 

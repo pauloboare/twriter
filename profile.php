@@ -81,7 +81,7 @@ $postCount=mysqli_fetch_assoc($postUserCount);
                                 $sql="INSERT INTO tb_follow VALUES (NULL, ".$_SESSION['id-user'].",".$idProfile.")";
                                 $resultF=mysqli_query($connect, $sql);
                                     if ($resultF) {
-                                      echo "<meta HTTP-EQUIV='refresh' CONTENT='0.1;URL=".$userProfile."'>";
+                                      echo "<meta HTTP-EQUIV='refresh' CONTENT='0.1';URL=".$userProfile."'>";
                                      }
                                     }
                                 }
@@ -95,7 +95,7 @@ $postCount=mysqli_fetch_assoc($postUserCount);
                                 $sql="DELETE FROM tb_follow WHERE user_on=".$_SESSION['id-user']. " AND user_following=$idProfile";
                                 $resultD=mysqli_query($connect, $sql);
                                     if ($resultD) {
-                                    echo "<meta HTTP-EQUIV='refresh' CONTENT='0.1;URL=".$userProfile."'>";
+                                    echo "<meta HTTP-EQUIV='refresh' CONTENT='0.1';URL=".$userProfile."'>";
                                         }
                                     }
                                 }

@@ -68,28 +68,28 @@ while ($result=mysqli_fetch_array($sqlFollower)) {
     elseif( mysqli_num_rows(mysqli_query($connect, "SELECT * FROM tb_follow 
     WHERE user_on=".$_SESSION['id-user']. " AND user_following=".$result['user_following'] )) === 0){
     echo    "<form method=post>
-            <button name='btn-follow' onClick='window.location.reload()'> Seguir </button>
+            <button name='btn-follow'> Seguir </button>
             </form>";
            
             if(isset($_POST['btn-follow'])){
-            $sql="INSERT INTO tb_follow VALUES (NULL, ".$_SESSION['id-user'].",".$result['user_following'].")";
+            $sql="INSERT INTO tb_follow VALUES (NULL, ".$_SESSION['id-user'].", ".$result['user_following'].")";
             $resultF=mysqli_query($connect, $sql);
                 if ($resultF) {
-                  // echo "<meta HTTP-EQUIV='refresh' CONTENT='0.1;URL=follower?userfollow=".$userProfile.">";
+               // echo "<meta HTTP-EQUIV='refresh' CONTENT='0.1';URL=follower?userfollow=".$userProfile.">";
                  }
                 }
             }
              elseif( mysqli_num_rows(mysqli_query($connect, "SELECT * FROM tb_follow 
             WHERE user_on=".$_SESSION['id-user']. " AND user_following=".$result['user_following'] )) > 0){
             echo    "<form method=post>
-            <button name='btn-follow' onClick='window.location.reload()'> Deixar de seguir </button>
+            <button name='btn-follow'> Deixar de seguir </button>
             </form>";
             
             if(isset($_POST['btn-follow'])){
             $sql="DELETE FROM tb_follow WHERE user_on=".$_SESSION['id-user']. " AND user_following=".$result['user_following'];
             $resultD=mysqli_query($connect, $sql);
                 if ($resultD) {
-                // echo "<meta HTTP-EQUIV='refresh' CONTENT='0.1;URL=follower?userfollow=".$userProfile.">";
+            //  echo "<meta HTTP-EQUIV='refresh' CONTENT='0.1';URL=follower?userfollow=".$userProfile.">";
                     }
                 }
             }

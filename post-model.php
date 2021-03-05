@@ -4,7 +4,7 @@
                 $userSession=$_SESSION['id-user'];
 
                 include "connect.php";
-if(basename($_SERVER['PHP_SELF'],'.php')=='home'){
+if((basename($_SERVER['PHP_SELF'],'.php')=='home') AND (!isset($_GET['search']))){
                 $sql = mysqli_query($connect, "SELECT * FROM tb_posts
                 left JOIN tb_follow ON tb_posts.fk_user = tb_follow.user_following
                 inner join tb_users on tb_posts.fk_user = tb_users.id_users
@@ -13,6 +13,7 @@ if(basename($_SERVER['PHP_SELF'],'.php')=='home'){
                 GROUP BY id_posts
                 ORDER BY datatime DESC");
 }
+
 else {
     $sql = mysqli_query($connect, "SELECT * FROM tb_posts
     left JOIN tb_follow ON tb_posts.fk_user = tb_follow.user_following

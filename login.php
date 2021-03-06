@@ -4,18 +4,102 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login | twriter</title>
-    <link rel="stylesheet" href="css/style.css">
+	<link rel="shortcut icon" href="favicon.png">
+
+    <title>Entrar no Twriter / Twriter</title>
+    <style>
+body {
+	font-family: BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+	}
+#container-login{
+	margin: 20px auto;
+	width:300px;
+}
+#logo {
+	width: 50px;
+	height: 50px;
+}
+h2 {
+	font-size: 32px;
+}
+.box-login {
+  position: relative;
+}
+.field-login {
+	width: 100%;
+	height: 50px;
+	border: 1px solid rgba(29,161,242,1.00);
+	border-radius: 9px;
+	margin: 10px 0;
+	font-size: 18px;
+	padding-left: 5px;
+	position: relative;
+  	z-index: 2;
+}
+.field-login:focus::placeholder {
+	color: transparent;
+}
+
+.label-login {
+  margin: 10px 0;
+  padding-left: 5px;
+  width: 100%;
+  position: absolute;
+  color: rgba(29,161,242,1.00);
+  font-size: 18px;
+  top: 0; bottom: 0; left: 0; right: 0;
+  transition: 0.5s;                
+}
+
+.field-login:focus + .label-login{
+  font-size: 10px;
+  z-index: 2;
+  transition: 0.7s;  
+}
+#submit-login{
+	width: 302px;
+	height: 50px;
+	font-size: 20px;
+	background: rgba(29,161,242,1.00);
+	color: #FFFFFF;
+	text-align: center;
+	border: none;
+	border-radius: 9px;
+	font-weight: bold;
+}
+p {
+	text-align: center;
+	font-size: 14px;
+}
+p a {
+	color: rgba(29,161,242,1.00);
+	text-decoration: none;
+}
+p a:hover {
+	text-decoration: underline;
+}
+	</style>
 </head>
 <body>
 
-
+<div id="container-login">
+<img src="img/logo.png" id="logo">
+<h2> Entrar no Twriter </h2>
 <form method="post">
-<input type="text" name="username" placeholder="User" required /> <br/>
-<input type="password" name="password" placeholder="Password" required /> <br/>
-<input type="submit" value="Login" />
+<div class="box-login">
+<input type="text" name="username" placeholder="Celular, e-mail ou nome de usuário" class="field-login" required />
+<label for="username" class="label-login">Celular, e-mail ou nome de usuário</label>
+</div>
+<div class="box-login">
+<input type="password" name="password" placeholder="Senha" class="field-login" required />
+<label for="password" class="label-login">Celular, e-mail ou nome de usuário</label>
+</div>
+<input type="submit" value="Entrar" id="submit-login" />
 </form> 
-
+<p>
+<a href="#">Esqueceu sua senha?</a> · 
+<a href="register.php">Inscrever-se no Twitter</a>
+</p>
 	<?php 
 	include "connect.php";
 	if(isset($_POST['username'],$_POST['password'])){
@@ -49,7 +133,7 @@
 	mysqli_close($connect);
 	?>
 
-	<p> Don't have a registration?<a href="register.php"> Make your registration!</a> </p>
+	</div>
     
 </body>
 </html>

@@ -25,9 +25,25 @@
                             if(isset($_POST['post'])){
                             $a=$_SESSION['id-user'];
                             $b=$_POST['post'];
-                            $sql="INSERT INTO tb_posts (id_posts, fk_user, post, datatime) VALUES (NULL, '$a','$b', NOW())";
-                                if (mysqli_query($connect, $sql)): endif;
+                            $time=time();
+                            $sql="INSERT INTO tb_posts VALUES (NULL, '$a','$b', NOW(), $time)";
+                            if (mysqli_query($connect, $sql)):endif;
+                           
+                        
                             }
+                            if(isset($_POST['post'])){
+                               
+                                $sqlStatus="SELECT * FROM tb_posts WHERE tb_posts.timestamp=$time";
+                                $resultStatus=mysqli_query($connect, $sqlStatus);
+                                
+                                if (mysqli_num_rows($resultStatus)) {
+                                $dataStatus=mysqli_fetch_array($resultStatus);
+                                $idStatus=$dataStatus['id_posts'];
+                                }
+                                $sqlUp="UPDATE tb_posts SET tb_posts.timestamp=".$idStatus."$time WHERE tb_posts.timestamp=$time";
+                                if (mysqli_query($connect, $sqlUp)):endif;
+                                }
+                            
                             mysqli_close ($connect);
                             ?>
                             </form>

@@ -34,12 +34,11 @@ h2 {
 	font-size: 18px;
 	padding-left: 5px;
 	position: relative;
-  	z-index: 2;
+  	z-index: 1;
 }
 .field-login:focus::placeholder {
 	color: transparent;
 }
-
 .label-login {
   margin: 10px 0;
   padding-left: 5px;
@@ -53,7 +52,7 @@ h2 {
 
 .field-login:focus + .label-login{
   font-size: 10px;
-  z-index: 2;
+  z-index: 1;
   transition: 0.7s;  
 }
 #submit-login{
@@ -81,25 +80,25 @@ p a:hover {
 	</style>
 </head>
 <body>
-
+<?php include "register.php"; ?>
 <div id="container-login">
 <img src="img/logo.png" id="logo">
 <h2> Entrar no Twriter </h2>
-<form method="post">
+<form method="post" action="login.php">
 <div class="box-login">
 <input type="text" name="username" placeholder="Celular, e-mail ou nome de usuário" class="field-login" required />
 <label for="username" class="label-login">Celular, e-mail ou nome de usuário</label>
 </div>
 <div class="box-login">
 <input type="password" name="password" placeholder="Senha" class="field-login" required />
-<label for="password" class="label-login">Celular, e-mail ou nome de usuário</label>
+<label for="password" class="label-login">Senha</label>
 </div>
 <input type="submit" value="Entrar" id="submit-login" />
 </form> 
 <p>
 <a href="#">Esqueceu sua senha?</a> · 
-<a href="register.php">Inscrever-se no Twitter</a>
-</p>
+<a href="register.php"><a href="#ex1" rel="modal:open">Inscrever-se no Twitter</a>
+
 	<?php 
 	include "connect.php";
 	if(isset($_POST['username'],$_POST['password'])){
@@ -107,8 +106,6 @@ p a:hover {
 		$username=$_POST['username'];
 		$password=md5(md5($_POST['password']."#?*&#"));;
 		$check=mysqli_query($connect, "SELECT * FROM tb_users WHERE username ='$username' AND password ='$password'");
-
-            
 
 		if(mysqli_num_rows($check) > 0 ) {
 
@@ -130,10 +127,10 @@ p a:hover {
 			echo "Incorrect username or password";
 		}
 	}
+	echo (isset($_GET['status']) and ($_GET['status']=='cadastrado')) ?  "Usuário cadastrado. Faça o login!" : "";
 	mysqli_close($connect);
 	?>
-
+</p>
 	</div>
     
-</body>
-</html>
+<?php include "footer.php"; ?>

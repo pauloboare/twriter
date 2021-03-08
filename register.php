@@ -1,19 +1,27 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register | twriter</title>
-    <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-<form method="post">
-<input type="text" name="username" placeholder="Username" required /> <br/>
-<input type="text" name="name" placeholder="Name" required /> <br/>
-<input type="password" name="password" placeholder="Password" required /> <br/>
-<input type="password" name="r-password" placeholder="Repeat password" required /> <br/>
-<input type="submit" value="Register" />
+<!-- Modal HTML embedded directly into document -->
+<div id="ex1" class="modal">
+ 
+ 
+  <p>
+<img src="img/logo.png" id="logo">
+<form method="post" action="register.php">
+<div class="box-login">
+<input type="text" name="username" placeholder="Celular, e-mail ou nome de usuário" class="field-login" required /> 
+<label for="username" class="label-login">Celular, e-mail ou nome de usuário</label>
+</div>
+<div class="box-login">
+<input type="text" name="name" placeholder="Nome" class="field-login" required /> 
+<label for="username" class="label-login">Nome</label>
+</div>
+<div class="box-login">
+<input type="password" name="password" placeholder="Senha" class="field-login" required /> 
+<label for="username" class="label-login">Senha</label>
+</div>
+<div class="box-login">
+<input type="password" name="r-password" placeholder="Repita a senha" class="field-login" required >
+<label for="username" class="label-login">Repita a senha</label>
+</div>
+<input type="submit" value="Inscreva-se" id="submit-login" >
 </form> 
 
     <?php 
@@ -31,12 +39,11 @@
             $register="INSERT INTO tb_users VALUES (NULL,'$a', '$b', '$c')";
             $result=mysqli_query($connect, $register);
                 if ($result) {
-                header('location:logout.php');
-                echo "Sucesseful";
+                header("Location: login.php?status=cadastrado");
                 }
                 }
                 else {
-                    echo "Passwords do not match";
+                    echo "Senhas não coincidem";
                     }
         }
     }
@@ -44,5 +51,7 @@
     mysqli_close($connect);
     ?>
 
-</body>
-</html>
+</p>
+
+
+</div>

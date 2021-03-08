@@ -19,7 +19,7 @@
 <header role="banner" class="fullheight">
     <div id="header-left">
         <nav role="navigation">
-        <a href="home" role="link" class="nav-link"><div class="link-title"><img src="img/origami.png" id="nav-logo"></div></a>
+        <a href="home" role="link" class="nav-link"><div class="link-title"><img src="img/logo.png" id="nav-logo"></div></a>
         <a href="home" role="link" class="nav-link"><div class="link-title"><span class="material-icons">home</span><span>Página Inicial</span></div></a>
         <a href="#" role="link" class="nav-link"><div class="link-title"><span class="material-icons">tag</span><span>Explorar</span></div></a>
         <a href="#" role="link" class="nav-link"><div class="link-title"><span class="material-icons">notifications_none</span><span>Notificações</span></div></a>
@@ -38,8 +38,7 @@
 
         <div id="acount">
 
-<ul id="list-acount">    
-<li>
+<button id="dropup">
     <?php
        echo "<div id='myacount'>
 
@@ -51,12 +50,12 @@
        <span class='post-username-title'>@" 
        .$_SESSION['user-checked'].
        "</span></div></div>";
-    ?>      
-    <ul>
-    <li> <a href="logout.php"> Sair </a> </li>
-    </ul>
-</li>
-</ul>
+    ?>   
+    </button>   
+   <div id="dropup-open">
+    <a href="logout.php"> Sair </a>
+    </div>
+
         </div>
     </div>
 </header>

@@ -14,7 +14,6 @@
 
 
         <div id="feed">
-           
                     <?php include "form-post.php"; ?>      
    
             <section id="feed-posts">

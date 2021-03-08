@@ -36,18 +36,27 @@
 
         </div>
 
-        <div id="myacount">
-        <?php
-       
-        echo "<div id='user-avatar'>
-        <img src='img/default.png' class='img-avatar'>
-        </div>
-        <div id='post-single'> <span class='post-name-title'>"
-        .$_SESSION['name']."</span> <br> 
-        <span class='post-username-title'>@" 
-        .$_SESSION['user-checked'].
-        "</span></div>";
-        ?>
+        <div id="acount">
+
+<ul id="list-acount">    
+<li>
+    <?php
+       echo "<div id='myacount'>
+
+       <div id='user-avatar'>
+       <img src='img/default.png' class='img-avatar'>
+       </div>
+       <div id='post-single'> <span class='post-name-title'>"
+       .$_SESSION['name']."</span> <br> 
+       <span class='post-username-title'>@" 
+       .$_SESSION['user-checked'].
+       "</span></div></div>";
+    ?>      
+    <ul>
+    <li> <a href="logout.php"> Sair </a> </li>
+    </ul>
+</li>
+</ul>
         </div>
     </div>
 </header>

@@ -8,7 +8,7 @@ if((!isset($_SESSION['user-checked']) === TRUE ) and (!isset($_SESSION['password
 	unset ($_SESSION['name']);
 	unset($_SESSION['user-checked']);
 	unset($_SESSION['password-checked']);
-	header('Location: login);
+	header('Location: login');
 }
 
 ?>

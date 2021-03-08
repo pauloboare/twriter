@@ -57,10 +57,12 @@ header {
     width: 100%;
     display: block;
 }
-#myacount {
-    display: flex;
+#acount {
     position: relative;
     top: 100px;
+}
+#myacount {
+    display: flex;
 }
 #aside-search{
     background: #ffffff;
@@ -197,4 +199,15 @@ header {
 .post-username-title {
     color: #5d6266;
     text-decoration: none;
+}
+#list-acount li {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+#list-acount li ul {
+    display: none;
+}
+#list-acount li:hover ul {
+    display: block;
 }

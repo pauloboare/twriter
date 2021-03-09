@@ -17,7 +17,7 @@ else {
     $sql = mysqli_query($connect, "SELECT * FROM tb_posts
     left JOIN tb_follow ON tb_posts.fk_user = tb_follow.user_following
     inner join tb_users on tb_posts.fk_user = tb_users.id_users
-    WHERE tb_posts.fk_user =$idProfile
+    WHERE tb_posts.fk_user=$idProfile
     GROUP BY id_posts
     ORDER BY datatime DESC");
 }

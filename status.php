@@ -1,11 +1,6 @@
-<?php include "header.php";
-
-
-?>
-
+<?php include "header.php"; ?>
 
 <main role="main" class="fullheight">
-    
         
     <div id="feed-container">
                 <div id="header-home">
@@ -23,16 +18,16 @@
 
 include "connect.php";
 $status=$_GET['status'];
-$sql = mysqli_query($connect, "SELECT * FROM tb_posts
+$sqlStatus = mysqli_query($connect, "SELECT * FROM tb_posts
 left JOIN tb_follow ON tb_posts.fk_user = tb_follow.user_following
 inner join tb_users on tb_posts.fk_user = tb_users.id_users
 WHERE tb_posts.timestamp = $status
 GROUP BY id_posts
 ORDER BY datatime DESC");
 
-while ($result=mysqli_fetch_array($sql)) {
+while ($resultStatus=mysqli_fetch_array($sqlStatus)) {
                    
-    $dataStart = $result['datatime'];
+    $dataStart = $resultStatus['datatime'];
     $dataNow = date("Y-m-d H:i:s");
 
     $unix_Start = strtotime($dataStart);
@@ -50,18 +45,20 @@ while ($result=mysqli_fetch_array($sql)) {
         $typeTime=" h";
     }
     else {
-        $date = $result['datatime'];
+        $date = $resultStatus['datatime'];
         $crhonology=strftime('%d de %b', strtotime( $date ));
         $typeTime="";
     }
 
     echo "<article id='posts'>
     <div id='user-avatar'>
-    <a href='".$result['username']."'><img src='img/."$result['avatarame']. " class='img-avatar'></a>
+    <a href='".$resultStatus['username']."'> <img src='img/".$resultStatus['avatar']."' class='img-avatar'> </a>
     </div>
-    <div id='post-single'> <a href='".$result['username']."' class='post-name-title'>".
-    $result['name']."</a> <a href='".$result['username']."' class='post-username-title'> @".$result['username']."</a> - <span class='post-username-title'> <a href=status.php?status=".$result['timestamp'].">".$crhonology. " ".$typeTime. "</a></span><br>".
-    $result['post'].
+    <div id='post-single'> <a href='".$resultStatus['username']."' class='post-name-title'>"
+    .$resultStatus['name']."</a> <a href='".$resultStatus['username']."' class='post-username-title'> @"
+    .$resultStatus['username']."</a> - <span class='post-username-title'> <a href=status.php?status="
+    .$resultStatus['timestamp'].">".$crhonology. " ".$typeTime. "</a></span><br>"
+    .$resultStatus['post'].
     "</div>
     </article>";
 }
@@ -75,8 +72,5 @@ mysqli_close($connect);
     <?php include "sidebar.php"; ?>
     
 </main>
-
-
-
 
 <?php include "footer.php"; ?>

@@ -18,6 +18,9 @@ $dataUser=mysqli_fetch_array($resultUser);
 $idProfile=$dataUser['id_users'];
 $nameProfile=$dataUser['name'];
 $avatarProfile=$dataUser['avatar'];
+$bioProfile=$dataUser['bio'];
+$siteProfile=$dataUser['site'];
+$localProfile=$dataUser['local'];
 }
 else {
     http_response_code(404);
@@ -66,11 +69,13 @@ $postCount=mysqli_fetch_assoc($postUserCount);
                     echo "<span class='post-name-title'>"
                         .$nameProfile."</span> <br> 
                         <span class='post-username-title'>@" 
-                        .$userProfile."</span>";
+                        .$userProfile."</span> <br>
+                        <span class='post-bio-title'>".$bioProfile."</span> <br>
+                        <span class='post-details-title'>".$localProfile." ".$siteProfile."</span>";
                         if( $idProfile == $_SESSION['id-user'] ){
-                            echo "<form method=post>
-                            <button> Editar Perfil </button>
-                            </form>";
+                            echo "<div class='edit-profile'>";
+                            include "edit-profile.php";
+                            echo "</div>";
                         }
                         elseif( mysqli_num_rows(mysqli_query($connect, "SELECT * FROM tb_follow 
                         WHERE user_on=".$_SESSION['id-user']. " AND user_following=".$idProfile )) === 0){

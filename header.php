@@ -14,6 +14,17 @@
  include "session.php";
  setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
                 date_default_timezone_set('America/Sao_Paulo');
+            
+                include "connect.php";
+                $idProfile=$_SESSION['id-user'];
+                $sqlUser="SELECT * FROM tb_users WHERE id_users=$idProfile";
+                $resultUser=mysqli_query($connect, $sqlUser);
+                
+                if (mysqli_num_rows($resultUser)) {
+                $dataUser=mysqli_fetch_array($resultUser);
+                $avatarProfile=$dataUser['avatar'];
+                }
+
 ?>
 <div id="container" class="fullheight">
 <header role="banner" class="fullheight">
@@ -43,13 +54,15 @@
        echo "<div id='myacount'>
 
        <div id='user-avatar'>
-       <img src='img/default.png' class='img-avatar'>
+       <img src='img/".$avatarProfile."' class='img-avatar'>
        </div>
        <div id='post-single'> <span class='post-name-title'>"
        .$_SESSION['name']."</span> <br> 
        <span class='post-username-title'>@" 
        .$_SESSION['user-checked'].
        "</span></div></div>";
+
+
     ?>   
     </button>   
    <div id="dropup-open">
@@ -59,4 +72,3 @@
         </div>
     </div>
 </header>
-    

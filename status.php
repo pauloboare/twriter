@@ -57,7 +57,7 @@ while ($result=mysqli_fetch_array($sql)) {
 
     echo "<article id='posts'>
     <div id='user-avatar'>
-    <a href='".$result['username']."'><img src='img/default.png' class='img-avatar'></a>
+    <a href='".$result['username']."'><img src='img/."$result['avatarame']. " class='img-avatar'></a>
     </div>
     <div id='post-single'> <a href='".$result['username']."' class='post-name-title'>".
     $result['name']."</a> <a href='".$result['username']."' class='post-username-title'> @".$result['username']."</a> - <span class='post-username-title'> <a href=status.php?status=".$result['timestamp'].">".$crhonology. " ".$typeTime. "</a></span><br>".

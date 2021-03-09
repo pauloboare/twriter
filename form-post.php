@@ -1,6 +1,19 @@
+<?php
+include "connect.php";
+$idProfile=$_SESSION['id-user'];
+$sqlUser="SELECT * FROM tb_users WHERE id_users=$idProfile";
+$resultUser=mysqli_query($connect, $sqlUser);
+
+if (mysqli_num_rows($resultUser)) {
+$dataUser=mysqli_fetch_array($resultUser);
+$avatarProfile=$dataUser['avatar'];
+}
+
+?>
+
 <div id="feed-form">
                     <div id='form-avatar'>
-                        <img src='img/default.png' id='img-avatar'>
+                        <img src="img/<?php echo $avatarProfile;?>" id="img-avatar">
                     </div>
                     <div id='mypost'>
                         <form method="post">
@@ -20,7 +33,7 @@
                                 </div>
                             </div>
                             <?php 
-                            include "connect.php";
+                          
                            
                             if(isset($_POST['post'])){
                             $a=$_SESSION['id-user'];
@@ -40,7 +53,7 @@
                                 $dataStatus=mysqli_fetch_array($resultStatus);
                                 $idStatus=$dataStatus['id_posts'];
                                 }
-                                $sqlUp="UPDATE tb_posts SET tb_posts.timestamp=".$idStatus."$time WHERE tb_posts.timestamp=$time";
+                                $sqlUp="UPDATE tb_posts SET tb_posts.timestamp='$idStatus$time' WHERE tb_posts.timestamp=$time";
                                 if (mysqli_query($connect, $sqlUp)):endif;
                                 }
                             

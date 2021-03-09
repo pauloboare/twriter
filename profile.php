@@ -17,6 +17,7 @@ if (mysqli_num_rows($resultUser)) {
 $dataUser=mysqli_fetch_array($resultUser);
 $idProfile=$dataUser['id_users'];
 $nameProfile=$dataUser['name'];
+$avatarProfile=$dataUser['avatar'];
 }
 else {
     http_response_code(404);
@@ -48,7 +49,7 @@ $postCount=mysqli_fetch_assoc($postUserCount);
         <div id="feed">
             <div id="feed-profile">
                     <div id='profile-avatar'>
-                        <img src='img/default.png' id='img-avatar'>
+                        <img src="img/<?php echo $avatarProfile;?>" id="img-avatar">
                     </div>
                     <div id='header-profile'>
                        

@@ -56,7 +56,7 @@ while ($resultStatus=mysqli_fetch_array($sqlStatus)) {
     </div>
     <div id='post-single'> <a href='".$resultStatus['username']."' class='post-name-title'>"
     .$resultStatus['name']."</a> <a href='".$resultStatus['username']."' class='post-username-title'> @"
-    .$resultStatus['username']."</a> - <span class='post-username-title'> <a href=status.php?status="
+    .$resultStatus['username']."</a> - <span class='post-chronology-title'> <a href=status.php?status="
     .$resultStatus['timestamp'].">".$crhonology. " ".$typeTime. "</a></span><br>"
     .$resultStatus['post'].
     "</div>

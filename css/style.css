@@ -13,6 +13,12 @@ main {
 }
 header {
     flex-grow: 1;
+    min-width:250px;
+    max-width:250px;
+}
+aside {
+    min-width:300px;
+    max-width:300px;
 }
 #nav-logo {
     width: 32px;
@@ -64,6 +70,7 @@ header {
 #myacount {
     display: flex;
 }
+
 #aside-search{
     background: #ffffff;
     width: 100%;
@@ -140,6 +147,14 @@ header {
     height: 60px;
     margin-left: 10px;
 }
+#avatar-current {
+    border-radius: 50%;
+    width: 60px;
+    height: 60px; 
+    
+    display: block;
+}
+
 #post-single, #mypost {
     margin-left: 10px;
      width: 100%;
@@ -187,7 +202,7 @@ header {
     color: #FFFFFF;
     text-decoration: none;
 }
-.post-name-title {
+.post-name-title, .post-name-title-profile {
     color: #000000;
     font-weight: 900;
     text-decoration: none;
@@ -236,7 +251,21 @@ header {
 #acount:hover #dropup {
     background-color: #dbebf5;
 }
+.cam-edit-container {
+    width: 42px;
+    height: 42px;
+    margin: auto;
+    top: 20%;
+    overflow:hidden;
+    position:relative;
+    border-radius: 50%;
+}
+.cam-edit-container:hover {
+    background: #a0a3a79a;
+}
 .cam-edit {
+    margin: auto;
+    top: 20%;
     width: 32px;
     height: 32px;
     overflow:hidden;
@@ -247,11 +276,11 @@ header {
     border-radius: 50%;
 }
 .cam-edit input {
-    display: block !important;
-    width: 32px !important;
-    height: 32px !important;
-    opacity: 0 !important;
-    overflow: hidden !important;
+    display: block;
+    width: 32px;
+    height: 32px;
+    opacity: 0;
+    overflow: hidden;
     border-radius: 50%;
 }
 
@@ -290,9 +319,10 @@ header {
     transition: 0.7s;  
   }
   #submit-profile{
-      width: 302px;
-      height: 50px;
-      font-size: 20px;
+      width: 80px;
+      height: 30px;
+      float: right;
+      font-size: 16px;
       background: rgba(29,161,242,1.00);
       color: #FFFFFF;
       text-align: center;
@@ -300,4 +330,27 @@ header {
       border-radius: 9px;
       font-weight: bold;
   }
- 
+  #h3-edit-profile{
+      display: inline;
+  }
+ .post-details-title, .post-details-title a{
+      color: #5d6266;
+ }
+ .post-details-title a {
+    color: rgba(29,161,242,1.00);
+    text-decoration: none;
+ }
+ .post-details-title a:hover {
+    text-decoration: underline;
+ }
+.count-follow a, .post-chronology-title a {
+    color: #5d6266;
+    text-decoration: none;
+ }
+ .count-follow a:hover, .post-chronology-title:hover{
+    text-decoration: underline;
+ }
+ .n-follow  {
+    color: #000000;
+    font-weight: bold;
+ }

@@ -21,6 +21,7 @@ $avatarProfile=$dataUser['avatar'];
 $bioProfile=$dataUser['bio'];
 $siteProfile=$dataUser['site'];
 $localProfile=$dataUser['local'];
+$sinceProfile=utf8_encode(strftime('%B de %Y', strtotime( $dataUser['since'] )));
 }
 else {
     http_response_code(404);
@@ -66,12 +67,13 @@ $postCount=mysqli_fetch_assoc($postUserCount);
                 $followResult=mysqli_fetch_assoc($follow);
                 $followingResult=mysqli_fetch_assoc($following);
                
-                    echo "<span class='post-name-title'>"
+                    echo "<span class='post-name-title-profile'>"
                         .$nameProfile."</span> <br> 
                         <span class='post-username-title'>@" 
                         .$userProfile."</span> <br>
                         <span class='post-bio-title'>".$bioProfile."</span> <br>
-                        <span class='post-details-title'>".$localProfile." ".$siteProfile."</span>";
+                        <span class='post-details-title'>".$localProfile
+                        ." <a href='".$siteProfile."' target='_blank'> $siteProfile </a> Ingressou em $sinceProfile </span>";
                         if( $idProfile == $_SESSION['id-user'] ){
                             echo "<div class='edit-profile'>";
                             include "edit-profile.php";
@@ -107,10 +109,10 @@ $postCount=mysqli_fetch_assoc($postUserCount);
                                 }
                         
                     
-                     echo "<p> <a href='follower.php?userfollow=$userProfile'>".
-                            $followResult['followers']." Seguindo </a> 
-                            <a href='following.php?userfollow=".$userProfile."/following'>".
-                            $followingResult['followings']." Seguidores ". 
+                     echo "<p class='count-follow'> <a href='follower.php?userfollow=$userProfile'><span class='n-follow'>".
+                            $followResult['followers']."</span> Seguindo </a> 
+                            <a href='following.php?userfollow=".$userProfile."/following'> <span class='n-follow'>".
+                            $followingResult['followings']."</span> Seguidores ". 
                             "</a>
                         </p>";
                         

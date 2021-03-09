@@ -53,7 +53,7 @@ while ($result=mysqli_fetch_array($sqlFollower)) {
     $strU="Deixar de seguir";
     echo "<article id='posts'>
     <div id='user-avatar'>
-    <a href=".$result['username']."><img src='img/default.png' class='img-avatar'></a>
+    <a href=".$result['username']."><img src='img/".$result['avatar']."' class='img-avatar'></a>
     </div>
     <div id='post-single'> <a href=".$result['username']." class='post-name-title'>".
     $result['name']."</a> <a href=".$result['username']." class='post-username-title'> @".$result['username']."</a>

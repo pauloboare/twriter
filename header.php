@@ -57,16 +57,20 @@
        <img src='img/".$avatarProfile."' class='img-avatar'>
        </div>
        <div id='post-single'> <span class='post-name-title'>"
-       .$_SESSION['name']."</span> <br> 
+       .$_SESSION['name']."</span>  <br> 
+
        <span class='post-username-title'>@" 
        .$_SESSION['user-checked'].
-       "</span></div></div>";
+       "</span></div>
+
+       <div id='points'> &#8226; &#8226; &#8226; </div>
+       </div>";
 
 
     ?>   
     </button>   
    <div id="dropup-open">
-    <a href="logout.php"> Sair </a>
+    <a href="logout.php"> Sair de @<?php echo $_SESSION['user-checked']; ?> </a>
     </div>
 
         </div>

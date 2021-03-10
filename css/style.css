@@ -70,7 +70,10 @@ aside {
 #myacount {
     display: flex;
 }
-
+#points {
+    min-width: 20px;
+    line-height: 40px;
+}
 #aside-search{
     background: #ffffff;
     width: 100%;

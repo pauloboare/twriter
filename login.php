@@ -112,12 +112,18 @@ p a:hover {
                 $data=mysqli_fetch_array($check);
                 $id_user=$data['id_users'];
                 $name=$data['name'];
+				$activated=$data['activated'];
 
-            $_SESSION['id-user']=$id_user;
-            $_SESSION['name']=$name;
-			$_SESSION['user-checked']=$username;
-			$_SESSION['password-checked']=$password;
-			header('location:index.php');
+					if($activated==="activated"){
+						$_SESSION['id-user']=$id_user;
+						$_SESSION['name']=$name;
+						$_SESSION['user-checked']=$username;
+						$_SESSION['password-checked']=$password;
+						header('Location: index.php');
+					}
+					elseif($activated==="disabled"){
+						echo "desativado";
+					}
 		}
 		else {
             unset ($_SESSION['id-user']);

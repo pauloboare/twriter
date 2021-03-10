@@ -28,9 +28,10 @@ $search=$_GET['q'];
     $sql = mysqli_query($connect, "SELECT * FROM tb_posts
     left JOIN tb_follow ON tb_posts.fk_user = tb_follow.user_following
     inner join tb_users on tb_posts.fk_user = tb_users.id_users
-    WHERE tb_posts.post LIKE '%$search%'
+    WHERE (tb_posts.post LIKE '%$search%'
     OR tb_users.username LIKE '%$search%'
-    OR tb_users.name LIKE '%$search%'
+    OR tb_users.name LIKE '%$search%')
+    AND tb_users.activated='activated'
     GROUP BY id_posts
     ORDER BY datatime DESC");
 }

@@ -49,7 +49,8 @@ include "header.php";
 
            $sqlFollower = mysqli_query($connect, "SELECT * FROM tb_follow
            left join tb_users on tb_follow.user_following = tb_users.id_users 
-           WHERE tb_follow.user_on=$idProfile");
+           WHERE tb_follow.user_on=$idProfile
+           AND tb_users.activated='activated'");
 
 
 while ($result=mysqli_fetch_array($sqlFollower)) {

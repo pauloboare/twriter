@@ -7,8 +7,9 @@ if((basename($_SERVER['PHP_SELF'],'.php')=='home') AND (!isset($_GET['search']))
                 $sql = mysqli_query($connect, "SELECT * FROM tb_posts
                 left JOIN tb_follow ON tb_posts.fk_user = tb_follow.user_following
                 inner join tb_users on tb_posts.fk_user = tb_users.id_users
-                WHERE tb_follow.user_on=$userSession
-                OR tb_posts.fk_user =$userSession
+                WHERE (tb_follow.user_on=$userSession
+                OR tb_posts.fk_user =$userSession)
+                AND tb_users.activated='activated'
                 GROUP BY id_posts
                 ORDER BY datatime DESC");
 }
@@ -52,7 +53,9 @@ else {
                     <a href='".$result['username']."'><img src=img/".$result['avatar']." class='img-avatar'></a>
                     </div>
                     <div id='post-single'> <a href='".$result['username']."' class='post-name-title'>".
-                    $result['name']."</a> <a href='".$result['username']."' class='post-username-title'> @".$result['username']."</a> - <span class='post-chronology-title'> <a href=status.php?status=".$result['timestamp'].">".$crhonology. " ".$typeTime. "</a></span><br>".
+                    $result['name']."</a> <a href='".$result['username']."' class='post-username-title'> @".$result['username'].
+                    "</a> - <span class='post-chronology-title'> <a href=status.php?status=".$result['timestamp'].">".$crhonology. " ".$typeTime. 
+                    "</a></span><br>".
                     $result['post'].
                     "</div>
                     </article>";

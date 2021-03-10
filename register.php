@@ -37,7 +37,7 @@
         }
         else {
             if($c==$d){
-            $register="INSERT INTO tb_users VALUES (NULL,'$a', '$b', '$c', '$avatar','','','','', NOW())";
+            $register="INSERT INTO tb_users VALUES (NULL,'$a', '$b', '$c', '$avatar','','','','', NOW(),'activated')";
             $result=mysqli_query($connect, $register);
                 if ($result) {
                 header("Location: login.php?status=cadastrado");

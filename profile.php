@@ -62,8 +62,14 @@ $postCount=mysqli_fetch_assoc($postUserCount);
 
                     <?php
                 
-                $follow = mysqli_query($connect, "SELECT COUNT(*) as followers FROM tb_follow WHERE user_on=$idProfile");
-                $following = mysqli_query($connect, "SELECT COUNT(*) as followings FROM tb_follow WHERE user_following=$idProfile");
+                $follow = mysqli_query($connect, "SELECT COUNT(*) as followers FROM tb_follow 
+                inner join tb_users on tb_follow.user_following = tb_users.id_users 
+                WHERE user_on=$idProfile AND tb_users.activated='activated'");
+
+                $following = mysqli_query($connect, "SELECT COUNT(*) as followings FROM tb_follow 
+                inner join tb_users on tb_follow.user_on = tb_users.id_users
+                WHERE user_following=$idProfile AND tb_users.activated='activated'");
+
                 $followResult=mysqli_fetch_assoc($follow);
                 $followingResult=mysqli_fetch_assoc($following);
                
